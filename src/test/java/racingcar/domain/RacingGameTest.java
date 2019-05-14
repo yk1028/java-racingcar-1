@@ -1,13 +1,19 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Rule.MoveRule;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RacingGameTest {
     @Test
     void 자동차들이_없는_경우() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new RacingGame(CarNameSpliter.splitCarNames(""), 1);
+            RacingCars racingCars = new RacingCars();
+            RacingGame.playRacingGame(racingCars, 1, new MoveRule());
         });
     }
 
